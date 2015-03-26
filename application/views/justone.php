@@ -1,8 +1,8 @@
 <div class="row">
     {ordernum} for {customer} ({ordertype})
     {burgers}
-    <h4>Burger #{burgernum}</h4>
-        Patty: {patty} <br/>
+    <h4>*Burger #{burgernum}*</h4>
+        Base: {patty} <br/>
         Cheeses: {cheeses}
         <br />
         Toppings: {toppings}
