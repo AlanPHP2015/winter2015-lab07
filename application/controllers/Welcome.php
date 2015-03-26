@@ -23,7 +23,10 @@ class Welcome extends Application {
 	// Build a list of orders
 	
 	// Present the list to choose from
-	$this->data['pagebody'] = 'homepage';
+        $orders = $this->orders->getAllOrderNames();
+        asort($orders);
+        $this->data['orders'] = $orders;
+        $this->data['pagebody'] = 'homepage';
 	$this->render();
     }
     
@@ -31,14 +34,19 @@ class Welcome extends Application {
     //  Show the "receipt" for a specific order
     //-------------------------------------------------------------
 
-    function order($filename)
+    function order($orderNum)
     {
 	// Build a receipt for the chosen order
-	
+	$order = $this->orders->getOrder($orderNum);
 	// Present the list to choose from
 	$this->data['pagebody'] = 'justone';
+        
+        $this->data['ordernum'] = $orderNum;
+        $this->data['ordertype'] = $order['ordertype'];
+        $this->data['ordertotal'] = $order['ordertotal'];
+        $this->data['customer'] = $order['customer'];
+        $this->data['burgers'] = $order['burgers'];
+//        var_dump($order['burgers']);
 	$this->render();
     }
-    
-
 }
